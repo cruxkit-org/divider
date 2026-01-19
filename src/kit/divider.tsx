@@ -35,6 +35,7 @@
             variant         = 'solid',
             thickness       = 'thin',
             color           = '2',
+            opacity         = 50,
             spacing,
             className      : className,
             role            = 'separator',
@@ -44,11 +45,13 @@
         // Thickness classes
         const thicknessClasses = {
             horizontal: {
+                'super-thin': 'border-t border-1',
                 thin        : 'border-t',
                 medium      : 'border-t-2',
                 thick       : 'border-t-4'
             },
             vertical: {
+                'super-thin': 'border-s border-1',
                 thin        : 'border-s',
                 medium      : 'border-s-2',
                 thick       : 'border-s-4'
@@ -64,11 +67,29 @@
 
         // Color classes
         const colorClasses = {
-            '1'             : 'border-1',
-            '2'             : 'border-2',
-            '3'             : 'border-3',
+            '1'             : 'border-c1',
+            '2'             : 'border-c2',
+            '3'             : 'border-c3',
             'brand'         : 'border-brand',
             'current'       : 'border-current'
+        };
+
+        const opacityClasses = {
+            0               : 'opacity-0',
+            5               : 'opacity-5',
+            10              : 'opacity-10',
+            20              : 'opacity-20',
+            25              : 'opacity-25',
+            30              : 'opacity-30',
+            40              : 'opacity-40',
+            50              : 'opacity-50',
+            60              : 'opacity-60',
+            70              : 'opacity-70',
+            75              : 'opacity-75',
+            80              : 'opacity-80',
+            90              : 'opacity-90',
+            95              : 'opacity-95',
+            100             : 'opacity-100'
         };
 
         // Spacing classes
@@ -100,6 +121,7 @@
             thicknessClasses[orientation][thickness],
             variantClasses[variant],
             colorClasses[color],
+            opacityClasses[opacity],
             spacingClasses,
             orientation === 'horizontal' ? 'w-full' : 'h-full',
             className
@@ -107,12 +129,20 @@
             .filter(Boolean)
             .join(' ');
 
+        const { style, max = 90, ...restPropsWithoutStyle } = restProps as { style?: Record<string, unknown>; max?: number };
+        const dimensionKey = orientation === 'horizontal' ? 'maxWidth' : 'maxHeight';
+        const mergedStyle = {
+            ...style,
+            [dimensionKey]: `${max}%`
+        };
+
         return (
             <div
                 className={baseClasses}
                 role={role}
                 aria-orientation={orientation}
-                {...restProps}
+                style={mergedStyle}
+                {...restPropsWithoutStyle}
             />
         );
     }

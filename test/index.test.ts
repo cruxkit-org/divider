@@ -67,6 +67,23 @@
             expect(el.getAttribute('aria-orientation')).toBe('vertical');
         });
 
+        test('applies default max 90% horizontally', () => {
+            const el = renderDivider();
+            expect(el.style.maxWidth).toBe('90%');
+            expect(el.style.maxHeight).toBe('');
+        });
+
+        test('applies default max 90% vertically', () => {
+            const el = renderDivider({ orientation: 'vertical' });
+            expect(el.style.maxHeight).toBe('90%');
+            expect(el.style.maxWidth).toBe('');
+        });
+
+        test('supports custom max value', () => {
+            const el = renderDivider({ max: 50 });
+            expect(el.style.maxWidth).toBe('50%');
+        });
+
         test('renders variants', () => {
             expect(renderDivider({ variant: 'solid' }).className).toContain('border-solid');
             expect(renderDivider({ variant: 'dashed' }).className).toContain('border-dashed');
@@ -74,12 +91,14 @@
         });
 
         test('renders thickness (horizontal)', () => {
+            expect(renderDivider({ orientation: 'horizontal', thickness: 'super-thin' }).className).toContain('border-t-1/2');
             expect(renderDivider({ orientation: 'horizontal', thickness: 'thin' }).className).toContain('border-t');
             expect(renderDivider({ orientation: 'horizontal', thickness: 'medium' }).className).toContain('border-t-2');
             expect(renderDivider({ orientation: 'horizontal', thickness: 'thick' }).className).toContain('border-t-4');
         });
 
         test('renders thickness (vertical)', () => {
+            expect(renderDivider({ orientation: 'vertical', thickness: 'super-thin' }).className).toContain('border-s-1/2');
             expect(renderDivider({ orientation: 'vertical', thickness: 'thin' }).className).toContain('border-s');
             expect(renderDivider({ orientation: 'vertical', thickness: 'medium' }).className).toContain('border-s-2');
             expect(renderDivider({ orientation: 'vertical', thickness: 'thick' }).className).toContain('border-s-4');

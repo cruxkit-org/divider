@@ -8,7 +8,7 @@
 </div>
 
 <div align="center">
-    <img src="https://img.shields.io/badge/v-0.0.2-black"/>
+    <img src="https://img.shields.io/badge/v-0.0.3-black"/>
     <a href="https://github.com/cruxkit-org"><img src="https://img.shields.io/badge/🔥-@cruxkit-black"/></a>
     <br>
     <img src="https://img.shields.io/badge/coverage-100%25-brightgreen" alt="Test Coverage" />
@@ -44,7 +44,7 @@
 
     ```ts
     // in your ts files
-    import { Divider } from `@cruxkit/divider`;
+    import { Divider } from '@cruxkit/divider';
     ```
 
     <div align="center"> <img src="./assets/img/line.png" alt="line" style="display: block; margin-top:20px;margin-bottom:20px;width:500px;"/> </div>
@@ -72,12 +72,13 @@
                 <Divider variant="dotted" />
 
                 {/* Colors and Thickness */}
+                <Divider color="brand" thickness="super-thin" />
                 <Divider color="brand" thickness="thick" />
 
-                {/* Vertical Divider */}
+                {/* Vertical Divider with max */}
                 <div className="flex h-10">
                     <span>Left</span>
-                    <Divider orientation="vertical" />
+                    <Divider orientation="vertical" max={90} />
                     <span>Right</span>
                 </div>
                 
@@ -113,13 +114,19 @@
                 variant?            : 'solid' | 'dashed' | 'dotted';
 
                 // Thickness
-                thickness?          : 'thin' | 'medium' | 'thick';
+                thickness?          : 'super-thin' | 'thin' | 'medium' | 'thick';
 
                 // Color
                 color?              : '1' | '2' | '3' | 'brand' | 'current';
 
+                // Opacity
+                opacity?            : 0 | 5 | 10 | 20 | 25 | 30 | 40 | 50 | 60 | 70 | 75 | 80 | 90 | 95 | 100;
+
                 // Spacing
                 spacing?            : 0 | 1 | 2 | 3 | 4 | 6 | 8 | 12;
+
+                // Max dimension percentage
+                max?                : number;
 
                 // Styling
                 className?          : string;

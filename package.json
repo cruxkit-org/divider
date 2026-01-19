@@ -1,6 +1,6 @@
 {
 	"name"                             : "@cruxkit/divider",
-	"version"                          : "0.0.2",
+	"version"                          : "0.0.3",
 	"description"                      : "A lightweight, customizable divider component.",
 	"keywords"                         : ["crux", "kit", "divider"],
 	"license"                          : "MIT",

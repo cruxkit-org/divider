@@ -3,9 +3,11 @@ import { JSXElement } from '@minejs/jsx';
 interface DividerProps {
     orientation?: 'horizontal' | 'vertical';
     variant?: 'solid' | 'dashed' | 'dotted';
-    thickness?: 'thin' | 'medium' | 'thick';
+    thickness?: 'super-thin' | 'thin' | 'medium' | 'thick';
     color?: '1' | '2' | '3' | 'brand' | 'current';
+    opacity?: 0 | 5 | 10 | 20 | 25 | 30 | 40 | 50 | 60 | 70 | 75 | 80 | 90 | 95 | 100;
     spacing?: 0 | 1 | 2 | 3 | 4 | 6 | 8 | 12;
+    max?: number;
     className?: string;
     role?: string;
     'aria-orientation'?: 'horizontal' | 'vertical';
