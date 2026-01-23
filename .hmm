@@ -5,7 +5,7 @@
 	"repo": {
 		"org"           : "cruxkit",
 		"name"          : "divider",
-		"version"       : "0.0.5",
+		"version"       : "0.0.6",
 		"desc"          : "A lightweight, customizable divider component.",
 		"kw"            : ["crux", "kit", "divider"],
 		"license"       : "MIT",
